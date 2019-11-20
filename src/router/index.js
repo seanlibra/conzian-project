@@ -25,18 +25,23 @@ export default new Router({
       component: HelloWorld,
     },
     {
+      path: '/:id',
+      name: 'HelloWorld',
+      component: HelloWorld,
+    },
+    {
       path: '/tabBar',
       name:'tab',
       component: Tab,
       children: [
         {
-          path: '/page1',
+          path: 'page1',
           name:'Page1',
           component: page1,
         },
           
         {
-          path: '/page2',
+          path: 'page2',
           name:'Page2',
           component: page2,
         },

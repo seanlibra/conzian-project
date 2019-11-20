@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-   
+  <div class='d-flex'>
+   <!-- <sidebar/> -->
    <Tab/>
    <section>
    <router-view></router-view>
@@ -11,11 +11,13 @@
 
 <script>
 import Tab from '../components/pages/tabBar'
+import sidebar from '../components/sidebar'
 
 export default {
   name: "HelloWorld",
   components:{
    Tab,
+   sidebar,
   },
   data() {
     return {

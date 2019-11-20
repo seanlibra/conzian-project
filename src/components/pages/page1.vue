@@ -1,6 +1,6 @@
 <template>
   <div>
-      page1 component!!!!!!!!!!!!!
+     <p>{{$router.params.id}}</p>
   </div>
 </template>
 
