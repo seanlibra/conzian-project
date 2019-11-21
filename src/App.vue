@@ -1,11 +1,17 @@
 <template>
   <div id="app">
     <v-container grid-list-md>
-      <v-layout row wrap>
-        <v-flex d-flex md4>
+      <v-layout 
+        row 
+        wrap>
+        <v-flex 
+          d-flex 
+          md4>
           <sidebar />
         </v-flex>
-        <v-flex d-flex md8>
+        <v-flex 
+          d-flex 
+          md8>
           <router-view />
         </v-flex>
       </v-layout>

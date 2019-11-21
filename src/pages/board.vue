@@ -1,9 +1,10 @@
 <template>
-  <div class='d-flex'>
-   <Tab/>
-   <section>
-   <router-view></router-view>
-   </section>
+  <div class="d-flex">
+    <Tab/>
+    
+    <section>
+      <router-view/>
+    </section>
    
   </div>
 </template>

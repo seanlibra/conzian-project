@@ -4,6 +4,7 @@ import board from '@/pages/board'
 import summary from '@/components/summary'
 import profile from '@/components/profile'
 import tab from '@/components/tab'
+import daymove from '@/components/daymove'
 
 
 Vue.use(Router)
@@ -29,6 +30,11 @@ export default new Router({
           path: 'profile',
           name:'profile',
           component: profile,
+        },
+        {
+          path: 'daymove',
+          name:'daymove',
+          component: daymove,
         },
       ]
     },
