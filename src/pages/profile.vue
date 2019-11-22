@@ -14,12 +14,12 @@ export default {
      
     };
   },
-  //  watch:{
-  //   '$route.params.id':function(){
-  //     this.getNewData()
+   watch:{
+    '$route.params.id':function(){
+      this.getNewData()
       
-  //   }
-  // },
+    }
+  },
   created(){
     this.getNewData()
    

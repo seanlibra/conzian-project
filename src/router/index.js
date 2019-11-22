@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import board from '@/pages/board'
-import summary from '@/components/summary'
-import profile from '@/components/profile'
+import summary from '@/pages/summary'
+import profile from '@/pages/profile'
 import tab from '@/components/tab'
-import daymove from '@/components/daymove'
+import daymove from '@/pages/daymove'
 
 
 Vue.use(Router)

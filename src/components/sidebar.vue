@@ -14,7 +14,7 @@
               :key="item.id"
               avatar
               class="mymouse"
-              @click="getDetail(item.id)">
+              @click="getDetail(item.id,$route.name)">
               <v-list-tile-avatar>
                 <img src="https://randomuser.me/api/portraits/women/50.jpg" >
               </v-list-tile-avatar>
@@ -49,8 +49,11 @@ export default {
       });
   },
   methods: {
-    getDetail(id) {
-      this.$router.push(`/user/${id}/summary`);
+    getDetail(id,name) {
+      if (this.$route.params.id === id){
+        return
+      }
+      this.$router.push(`/user/${id}/${name}`);
     }
   }
   
