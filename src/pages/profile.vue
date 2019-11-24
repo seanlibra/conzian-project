@@ -1,11 +1,12 @@
 <template>
   <div>
     <p>目前的使用者ID:{{ $route.params.id }}   </p>
-    <h3>{{ profileData }}</h3>
+    <h3>{{ this.$store.state.Xprofile }}</h3>
   </div>
 </template>
 
 <script>
+import { getProfileData } from '@/api-data/profile.js'
 export default {
   
   data() {
@@ -16,24 +17,27 @@ export default {
   },
    watch:{
     '$route.params.id':function(){
-      this.getNewData()
+      this.fetchData()
       
     }
   },
   created(){
-    this.getNewData()
+    this.fetchData()
    
   },
   methods:{
-    getNewData(){
-    const axios = require('axios').default;
-    var vm = this;
-    axios.get(`https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/d1/patient/${vm.$route.params.id}/profile`)
-         .then(function (response) {
-           console.log(response)
-         vm.profileData = response.data
-           console.log(vm.profileDate)
-        })
+    fetchData(){
+     var vm = this
+     if (vm.$store.state.Xprofile == {} || vm.$store.state.Xprofile.id !== vm.profileData  )
+     {
+      getProfileData(this.$route.params.id)
+      .then(function(response){
+    
+        vm.profileData = response.data
+        vm.$store.dispatch('updateProfile',vm.profileData)
+      })
+     }
+     else return
     }
   }
 };

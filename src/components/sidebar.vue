@@ -45,7 +45,7 @@ export default {
       .get("https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/d1/list")
       .then(function(response) {
         vm.userlist = response.data;
-        // console.log(vm.userlist)
+        
       });
   },
   methods: {

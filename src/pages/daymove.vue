@@ -1,12 +1,13 @@
 <template>
   <div>
     <p>目前的使用者ID:{{ $route.params.id }}</p>
-    <h3>{{ dayMoveData }}</h3>
+    <h3>{{ this.$store.state.Xdaymove }}</h3>
   </div>
 </template>
 
 
 <script>
+import { getDayMoveData } from '@/api-data/daymove.js'
 export default {
   
   data() {
@@ -16,22 +17,29 @@ export default {
   },
   watch:{
     '$route':function(){
-       this.getNewData()
-    }
+      this.fetchData()
+      this.$store.dispatch('cleandata',{})
+    } 
   },
   created(){
-    this.getNewData()
+    this.fetchData()
   },
   methods:{
-    getNewData(){
-    const axios = require('axios').default;
-    var vm = this;
-    axios.get(`https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/d1/patient/${vm.$route.params.id}/exercise`)
-         .then(function (response) {
-           console.log(response)
-         vm.dayMoveData = response.data
-           console.log(vm.dayMoveData)
-        })  
+    fetchData () {
+     var vm = this
+     if (vm.$store.state.Xdaymove == {} || vm.$store.state.Xdaymove.id !== vm.dayMoveData  )
+    //  這邊有個BUG因為要判斷切換使用者的行為需要監聽vm.本地data但是在切換頁面時vm.data會destory所以會跳錯
+    // 而使用id則能達到這個效果
+     {
+      getDayMoveData(this.$route.params.id)
+      .then(function(response){
+        console.log(response.data)
+        vm.dayMoveData = response.data
+        vm.$store.dispatch('updateDaymove',vm.dayMoveData)
+        
+      })
+     }
+     else return
     }
   }
 };
