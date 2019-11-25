@@ -1,21 +1,26 @@
 <template>
   <div>
     <p>目前的使用者ID:{{ $route.params.id }}</p>
-    <h3>{{ this.$store.state.Xdaymove }}</h3>
+    <h3>{{ pageData }}</h3>
   </div>
 </template>
 <script>
 import { getDayMoveData } from '@/api-data/daymove.js'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
       dayMoveData: {}
     }
   },
+  computed: {
+    ...mapState({
+      pageData: state => state.Xdaymove
+    })
+  },
   watch: {
-    $route: function () {
+    '$route.params.id': function () {
       this.fetchData()
-      this.$store.dispatch('cleandata', {})
     }
   },
   created () {
@@ -24,11 +29,7 @@ export default {
   methods: {
     fetchData () {
       var vm = this
-      if (vm.$store.state.Xdaymove === {} || vm.$store.state.Xdaymove.id !== vm.dayMoveData)
-      //  這邊有個BUG因為要判斷切換使用者的行為需要監聽vm.本地data但是在切換頁面時vm.data會destory所以會跳錯
-      // 而使用id則能達到這個效果
-      // eslint-disable-next-line brace-style
-      {
+      if (vm.$store.state.Xdaymove.id !== vm.$route.params.id) {
         getDayMoveData(this.$route.params.id)
           .then(function (response) {
             console.log(response.data)

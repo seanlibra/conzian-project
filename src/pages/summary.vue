@@ -2,7 +2,7 @@
 <template>
   <div>
     <p>目前的使用者ID:{{ $route.params.id }}</p>
-    <h3>{{ this.$store.state.Xsummary }}</h3>
+    <h3>{{ pageData }}</h3>
   </div>
 </template>
 <script>
@@ -15,23 +15,21 @@ export default {
       summaryData: {}
     }
   },
-  computed: {
-    
-  },
+  computed: mapState({
+    pageData: state => state.Xsummary
+  }),
   watch: {
     '$route.params.id': function () {
       this.fetchData()
     }
   },
   created () {
-    this.summaryData = {
-    }
     this.fetchData()
   },
   methods: {
     fetchData () {
       var vm = this
-      if (vm.$store.state.Xsummary.id === '') {
+      if (vm.$store.state.Xsummary.id !== this.$route.params.id) {
         getSummaryData(this.$route.params.id)
           .then(function (response) {
             vm.summaryData = response.data

@@ -1,16 +1,22 @@
 <template>
   <div>
-    <p>目前的使用者ID:{{ $route.params.id }}   </p>
-    <h3>{{ this.$store.state.Xprofile }}</h3>
+    <p>目前的使用者ID:{{ $route.params.id }}</p>
+    <h3>{{ pageData }}</h3>
   </div>
 </template>
 <script>
 import { getProfileData } from '@/api-data/profile.js'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
       profileData: {}
     }
+  },
+  computed: {
+    ...mapState({
+      pageData: state => state.Xprofile
+    })
   },
   watch: {
     '$route.params.id': function () {
@@ -23,7 +29,7 @@ export default {
   methods: {
     fetchData () {
       var vm = this
-      if (vm.$store.state.Xprofile === {} || vm.$store.state.Xprofile.id !== vm.profileData) {
+      if (vm.$store.state.Xprofile.id !== vm.$route.params.id) {
         getProfileData(this.$route.params.id)
           .then(function (response) {
             vm.profileData = response.data

@@ -52,9 +52,9 @@ export default {
       if (this.$route.params.id === id) {
         return
       }
-      this.$router.push(`/user/${id}/${name}`);
+      this.$router.push(`/user/${id}/${name}`)
     }
-  } 
+  }
 }
 </script>
 

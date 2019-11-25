@@ -9,23 +9,27 @@ export default new Vuex.Store({
       value: '',
       page: ''
     },
-    Xprofile: {},
-    Xdaymove: {}
+    Xprofile: {
+      id: '',
+      value: '',
+      page: ''
+    },
+    Xdaymove: {
+      id: '',
+      value: '',
+      page: ''
+    }
   },
   actions: {
     updateSummary (context, status) {
       context.commit('SUMMARYSTATES', status)
     },
     updateProfile (context, status) {
-      context.commit('PROFILESTATES',status)
+      context.commit('PROFILESTATES', status)
     },
     updateDaymove (context, status) {
-      context.commit('DAYMOVESTATES',status)
-    },
-    cleandata (context, state) {
-      context.commit('CLEAN', status)
+      context.commit('DAYMOVESTATES', status)
     }
-
   },
   mutations: {
     SUMMARYSTATES (state, status) {
@@ -36,10 +40,6 @@ export default new Vuex.Store({
     },
     DAYMOVESTATES (state, status) {
       state.Xdaymove = status
-    },
-    CLEAN (state, status) {
-      state.Xsummary = status
     }
-
   }
 })
