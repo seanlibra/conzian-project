@@ -5,8 +5,8 @@
         v-model="drawer"
         permanent
         absolut>
-        <v-toolbar 
-          flat 
+        <v-toolbar
+          flat
           class="transparent">
           <v-list class="pa-0">
             <v-list-tile
@@ -31,33 +31,31 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       userlist: [],
       drawer: true,
       right: null
-    };
+    }
   },
-  created() {
-    const axios = require("axios").default;
-    var vm = this;
+  created () {
+    const axios = require('axios').default
+    var vm = this
     axios
-      .get("https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/d1/list")
-      .then(function(response) {
-        vm.userlist = response.data;
-        
-      });
+      .get('https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/d1/list')
+      .then(function (response) {
+        vm.userlist = response.data
+      })
   },
   methods: {
-    getDetail(id,name) {
-      if (this.$route.params.id === id){
+    getDetail (id, name) {
+      if (this.$route.params.id === id) {
         return
       }
       this.$router.push(`/user/${id}/${name}`);
     }
-  }
-  
-};
+  } 
+}
 </script>
 
 <style scoped>

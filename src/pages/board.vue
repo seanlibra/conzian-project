@@ -12,18 +12,18 @@ import Tab from '../components/tab'
 import sidebar from '../components/sidebar'
 
 export default {
-  name: "Board",
-  components:{
-   Tab,
-   sidebar,
+  name: 'Board',
+  components: {
+    Tab,
+    sidebar
   },
-  data() {
+  data () {
     return {
-      msg: "Welcome to Your Vue.js App",
-    };
-  },
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
 
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

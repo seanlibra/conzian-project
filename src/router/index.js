@@ -5,8 +5,6 @@ import summary from '@/pages/summary'
 import profile from '@/pages/profile'
 import tab from '@/components/tab'
 import daymove from '@/pages/daymove'
-
-
 Vue.use(Router)
 
 export default new Router({
@@ -14,29 +12,29 @@ export default new Router({
     {
       path: '/',
       name: 'board',
-      component: board,
+      component: board
     },
     {
       path: '/user/:id',
-      name:'tab',
+      name: 'tab',
       component: tab,
       children: [
         {
           path: 'summary',
-          name:'summary',
-          component: summary,
+          name: 'summary',
+          component: summary
         },
         {
           path: 'profile',
-          name:'profile',
-          component: profile,
+          name: 'profile',
+          component: profile
         },
         {
           path: 'daymove',
-          name:'daymove',
-          component: daymove,
-        },
+          name: 'daymove',
+          component: daymove
+        }
       ]
-    },
+    }
   ]
 })

@@ -4,43 +4,40 @@
     <h3>{{ this.$store.state.Xdaymove }}</h3>
   </div>
 </template>
-
-
 <script>
 import { getDayMoveData } from '@/api-data/daymove.js'
 export default {
-  
-  data() {
+  data () {
     return {
-     dayMoveData:{},
+      dayMoveData: {}
     }
   },
-  watch:{
-    '$route':function(){
+  watch: {
+    $route: function () {
       this.fetchData()
-      this.$store.dispatch('cleandata',{})
-    } 
+      this.$store.dispatch('cleandata', {})
+    }
   },
-  created(){
+  created () {
     this.fetchData()
   },
-  methods:{
+  methods: {
     fetchData () {
-     var vm = this
-     if (vm.$store.state.Xdaymove == {} || vm.$store.state.Xdaymove.id !== vm.dayMoveData  )
-    //  這邊有個BUG因為要判斷切換使用者的行為需要監聽vm.本地data但是在切換頁面時vm.data會destory所以會跳錯
-    // 而使用id則能達到這個效果
-     {
-      getDayMoveData(this.$route.params.id)
-      .then(function(response){
-        console.log(response.data)
-        vm.dayMoveData = response.data
-        vm.$store.dispatch('updateDaymove',vm.dayMoveData)
-        
-      })
-     }
-     else return
+      var vm = this
+      if (vm.$store.state.Xdaymove === {} || vm.$store.state.Xdaymove.id !== vm.dayMoveData)
+      //  這邊有個BUG因為要判斷切換使用者的行為需要監聽vm.本地data但是在切換頁面時vm.data會destory所以會跳錯
+      // 而使用id則能達到這個效果
+      // eslint-disable-next-line brace-style
+      {
+        getDayMoveData(this.$route.params.id)
+          .then(function (response) {
+            console.log(response.data)
+            vm.dayMoveData = response.data
+            vm.$store.dispatch('updateDaymove', vm.dayMoveData)
+          })
+      // eslint-disable-next-line no-useless-return
+      } else return
     }
   }
-};
+}
 </script>

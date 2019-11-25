@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app style="margin:0;">
-      <v-tabs 
+      <v-tabs
         color="cyan"
         dark
         slider-color="yellow">
@@ -14,17 +14,12 @@
     </v-app>
   </div>
 </template>
-
-
 <script>
 export default {
-  
-  data() {
+  data () {
     return {
-      
-    };
+    }
   },
-  methods: {},
-  
-};
+  methods: {}
+}
 </script>

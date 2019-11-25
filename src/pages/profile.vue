@@ -4,42 +4,36 @@
     <h3>{{ this.$store.state.Xprofile }}</h3>
   </div>
 </template>
-
 <script>
 import { getProfileData } from '@/api-data/profile.js'
 export default {
-  
-  data() {
+  data () {
     return {
-     profileData:{},
-     
-    };
-  },
-   watch:{
-    '$route.params.id':function(){
-      this.fetchData()
-      
+      profileData: {}
     }
   },
-  created(){
-    this.fetchData()
-   
+  watch: {
+    '$route.params.id': function () {
+      this.fetchData()
+    }
   },
-  methods:{
-    fetchData(){
-     var vm = this
-     if (vm.$store.state.Xprofile == {} || vm.$store.state.Xprofile.id !== vm.profileData  )
-     {
-      getProfileData(this.$route.params.id)
-      .then(function(response){
-    
-        vm.profileData = response.data
-        vm.$store.dispatch('updateProfile',vm.profileData)
-      })
-     }
-     else return
+  created () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      var vm = this
+      if (vm.$store.state.Xprofile === {} || vm.$store.state.Xprofile.id !== vm.profileData) {
+        getProfileData(this.$route.params.id)
+          .then(function (response) {
+            vm.profileData = response.data
+            vm.$store.dispatch('updateProfile', vm.profileData)
+          })
+      // eslint-disable-next-line brace-style
+      }
+      // eslint-disable-next-line no-useless-return
+      else return
     }
   }
-};
+}
 </script>
-
