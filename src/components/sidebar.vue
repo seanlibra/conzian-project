@@ -41,10 +41,10 @@ export default {
   created () {
     const axios = require('axios').default
     var vm = this
-    axios
-      .get('https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/d1/list')
+    axios.get('https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/d1/list')
       .then(function (response) {
         vm.userlist = response.data
+        vm.$router.push(`/user/${vm.userlist[0].id}/summary`)
       })
   },
   methods: {

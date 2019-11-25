@@ -16,7 +16,8 @@ export default {
     }
   },
   computed: mapState({
-    pageData: state => state.Xsummary
+    pageData: state => state.SummaryMod
+    // 自定義名 : 狀態 = >要讀取的狀態
   }),
   watch: {
     '$route.params.id': function () {
@@ -29,14 +30,14 @@ export default {
   methods: {
     fetchData () {
       var vm = this
-      if (vm.$store.state.Xsummary.id !== this.$route.params.id) {
+      if (vm.$store.state.SummaryMod.Xsummary.id !== this.$route.params.id) {
+        // 如果現在vuex裡面的id不等於載入頁面的使用者id則執行
         getSummaryData(this.$route.params.id)
           .then(function (response) {
             vm.summaryData = response.data
             vm.$store.dispatch('updateSummary', vm.summaryData)
           })
-      // eslint-disable-next-line no-useless-return
-      } else return
+      }
     }
   }
 }

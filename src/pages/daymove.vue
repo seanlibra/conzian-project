@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     ...mapState({
-      pageData: state => state.Xdaymove
+      pageData: state => state.DayMoveMod
     })
   },
   watch: {
@@ -29,15 +29,13 @@ export default {
   methods: {
     fetchData () {
       var vm = this
-      if (vm.$store.state.Xdaymove.id !== vm.$route.params.id) {
+      if (vm.$store.state.DayMoveMod.Xdaymove.id !== vm.$route.params.id) {
         getDayMoveData(this.$route.params.id)
           .then(function (response) {
-            console.log(response.data)
             vm.dayMoveData = response.data
             vm.$store.dispatch('updateDaymove', vm.dayMoveData)
           })
-      // eslint-disable-next-line no-useless-return
-      } else return
+      }
     }
   }
 }

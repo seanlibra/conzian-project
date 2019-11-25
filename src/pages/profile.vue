@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     ...mapState({
-      pageData: state => state.Xprofile
+      pageData: state => state.ProfileMod
     })
   },
   watch: {
@@ -29,16 +29,13 @@ export default {
   methods: {
     fetchData () {
       var vm = this
-      if (vm.$store.state.Xprofile.id !== vm.$route.params.id) {
+      if (vm.$store.state.ProfileMod.Xprofile.id !== vm.$route.params.id) {
         getProfileData(this.$route.params.id)
           .then(function (response) {
             vm.profileData = response.data
             vm.$store.dispatch('updateProfile', vm.profileData)
           })
-      // eslint-disable-next-line brace-style
       }
-      // eslint-disable-next-line no-useless-return
-      else return
     }
   }
 }
