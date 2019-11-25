@@ -1,7 +1,10 @@
 import board from '@/pages/board'
-export
-const Board = {
-  path: '/',
-  name: 'board',
-  component: board
-}
+
+const Board = [
+  {
+    path: '/',
+    name: 'board',
+    component: board
+  }
+]
+export default Board

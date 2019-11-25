@@ -8,6 +8,7 @@
 <script>
 import { getSummaryData } from '@/api-data/summary.js'
 import { mapState } from 'vuex'
+// import Board from '@/router/main.js'
 // import Axios from 'axios'
 export default {
   data () {

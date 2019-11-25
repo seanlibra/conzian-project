@@ -2,8 +2,8 @@ import summary from '@/pages/summary'
 import profile from '@/pages/profile'
 import tab from '@/components/tab'
 import daymove from '@/pages/daymove'
-export
-const pages = {
+
+const page = [{
   path: '/user/:id',
   name: 'tab',
   component: tab,
@@ -24,4 +24,5 @@ const pages = {
       component: daymove
     }
   ]
-}
+}]
+export default page
