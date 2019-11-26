@@ -2,8 +2,7 @@ import summary from '@/pages/summary'
 import profile from '@/pages/profile'
 import tab from '@/components/tab'
 import daymove from '@/pages/daymove'
-
-const page = [{
+export default [{
   path: '/user/:id',
   name: 'tab',
   component: tab,
@@ -25,4 +24,3 @@ const page = [{
     }
   ]
 }]
-export default page
