@@ -10,11 +10,11 @@
         <v-tab :to="{name:'daymove',params:$route.params.id}">每日動作</v-tab>
       </v-tabs>
       <router-view/>
-      <div class="text-xs-center mt-3"/>
     </v-app>
   </div>
 </template>
 <script>
+
 export default {
   data () {
     return {

@@ -2,18 +2,26 @@
 <template>
   <div>
     <p>目前的使用者ID:{{ $route.params.id }}</p>
-    <h3>{{ pageData }}</h3>
+    <h4><button @click="showDiagLog()">{{ pageData.Xsummary.id }}</button></h4>
+    <h4>{{ pageData.Xsummary.value }}</h4>
+    <h4>{{ pageData.Xsummary.page }}</h4>
+    <win
+      v-model="summaryData"
+      :open-value="open"/>
   </div>
 </template>
 <script>
 import { getSummaryData } from '@/api-data/summary.js'
 import { mapState } from 'vuex'
-// import Board from '@/router/main.js'
-// import Axios from 'axios'
+import win from '../components/dialog'
 export default {
+  components: {
+    win
+  },
   data () {
     return {
-      summaryData: {}
+      summaryData: {},
+      open: true
     }
   },
   computed: mapState({
@@ -39,6 +47,9 @@ export default {
             vm.$store.dispatch('updateSummary', vm.summaryData)
           })
       }
+    },
+    showDiagLog () {
+      this.open = (!this.open)
     }
   }
 }
