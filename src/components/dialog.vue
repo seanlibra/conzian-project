@@ -1,4 +1,3 @@
-/* eslint-disable vue/require-prop-types */
 <template>
   <div>
     <v-app>
@@ -6,7 +5,7 @@
         row
         justify-center>
         <v-dialog
-          v-model="dialog"
+          v-model="switchData"
           max-width="290">
           <v-card>
             <v-card-title class="headline">預覽</v-card-title>
@@ -22,7 +21,7 @@
               <v-btn
                 color="green darken-1"
                 flat="flat"
-                @click.native="dialog = false">修改</v-btn>
+              >修改</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -44,7 +43,12 @@ export default {
   },
   data () {
     return {
-      dialog: false
+      // dialog: false
+    }
+  },
+  computed: {
+    switchData: function () {
+      return this.openValue
     }
   },
   created () {

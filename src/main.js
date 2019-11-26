@@ -8,7 +8,6 @@ import Vuex from 'vuex'
 import 'vuetify/dist/vuetify.min.css'
 import store from './store'
 import axios from 'axios'
-import eventbus from './bus.js'
 axios.defaults.baseURL = 'https://i1qfr4wu4i.execute-api.us-east-1.amazonaws.com/dev/'
 Vue.config.productionTip = false
 Vue.use(Vuetify)
@@ -17,7 +16,6 @@ Vue.use(Vuex)
 new Vue({
   el: '#app',
   store,
-  eventbus,
   router,
   components: { App },
   template: '<App/>'
