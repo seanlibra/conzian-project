@@ -1,27 +1,40 @@
 
 <template>
   <div>
-    <p>目前的使用者ID:{{ $route.params.id }}</p>
-    <h4><button @click="showDiagLog()">{{ pageData.Xsummary.id }}</button></h4>
-    <h4>{{ pageData.Xsummary.value }}</h4>
-    <h4>{{ pageData.Xsummary.page }}</h4>
+    <p>目前的病人ID:{{ $route.params.id }}</p>
+    <h4><button @click="showDiagLog()">病人ID:{{ pageData.Xsummary.id }}</button></h4>
+    <h4>病人詳細資料:{{ pageData.Xsummary.value }}</h4>
+    <h4>目前頁面:{{ pageData.Xsummary.page }}</h4>
     <win
-      v-model="summaryData"
-      :open-value="open"/>
+      v-model="open"
+      :user-data="summaryData"
+      @backstate="backStateData()"
+      @openEdit="showEdit()"/>
+    <br>
+    <edit
+      :user-value="summaryData.value"
+      :open-edit-key="openEdit"
+      @sendData="afterData"/>
   </div>
 </template>
 <script>
 import { getSummaryData } from '@/api-data/summary.js'
 import { mapState } from 'vuex'
 import win from '../components/dialog'
+import edit from '../components/edit'
 export default {
   components: {
-    win
+    win,
+    edit
   },
   data () {
     return {
-      summaryData: {},
-      open: true
+      summaryData: {
+        value: ''
+      },
+      open: false,
+      openEdit: false,
+      valueFromEdit: ''
     }
   },
   computed: mapState({
@@ -50,6 +63,17 @@ export default {
     },
     showDiagLog () {
       this.open = (!this.open)
+    },
+    backStateData () {
+      this.open = false
+    },
+    showEdit () {
+      console.log(this.openEdit)
+      this.openEdit = !this.openEdit
+    },
+    afterData (Value) {
+      console.log('this is from parent', Value)
+      this.summaryData.value = Value
     }
   }
 }
