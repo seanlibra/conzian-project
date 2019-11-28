@@ -14,7 +14,7 @@
     <edit
       v-model="openEdit"
       :user-value="summaryData.value"
-      @sendData="DataFromEdit"/>
+      @sendData="dataFromEdit"/>
   </div>
 </template>
 <script>
@@ -70,7 +70,7 @@ export default {
     showEdit () {
       this.openEdit = !this.openEdit
     },
-    DataFromEdit (Value) {
+    dataFromEdit (Value) {
       this.summaryData.value = Value
     }
   }
