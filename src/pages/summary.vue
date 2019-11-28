@@ -13,8 +13,8 @@
     <br>
     <edit
       :user-value="summaryData.value"
-      :open-edit-key="openEdit"
-      @sendData="afterData"/>
+      v-model="openEdit"
+      @sendData="DataFromEdit"/>
   </div>
 </template>
 <script>
@@ -71,7 +71,7 @@ export default {
       console.log(this.openEdit)
       this.openEdit = !this.openEdit
     },
-    afterData (Value) {
+    DataFromEdit (Value) {
       console.log('this is from parent', Value)
       this.summaryData.value = Value
     }
