@@ -1,19 +1,40 @@
 
 <template>
   <div>
-    <p>目前的使用者ID:{{ $route.params.id }}</p>
-    <h3>{{ pageData }}</h3>
+    <p>目前的病人ID:{{ $route.params.id }}</p>
+    <h4><button @click="showDiagLog()">病人ID:{{ pageData.Xsummary.id }}</button></h4>
+    <h4>病人詳細資料:{{ pageData.Xsummary.value }}</h4>
+    <h4>目前頁面:{{ pageData.Xsummary.page }}</h4>
+    <win
+      v-model="open"
+      :user-data="summaryData"
+      @backstate="backStateData()"
+      @openEdit="showEdit()"/>
+    <br>
+    <edit
+      v-model="openEdit"
+      :user-value="summaryData.value"
+      @sendData="dataFromEdit"/>
   </div>
 </template>
 <script>
 import { getSummaryData } from '@/api-data/summary.js'
 import { mapState } from 'vuex'
-// import Board from '@/router/main.js'
-// import Axios from 'axios'
+import win from '../components/dialog'
+import edit from '../components/edit'
 export default {
+  components: {
+    win,
+    edit
+  },
   data () {
     return {
-      summaryData: {}
+      summaryData: {
+        value: ''
+      },
+      open: false,
+      openEdit: false,
+      valueFromEdit: ''
     }
   },
   computed: mapState({
@@ -39,6 +60,18 @@ export default {
             vm.$store.dispatch('updateSummary', vm.summaryData)
           })
       }
+    },
+    showDiagLog () {
+      this.open = (!this.open)
+    },
+    backStateData () {
+      this.open = false
+    },
+    showEdit () {
+      this.openEdit = !this.openEdit
+    },
+    dataFromEdit (Value) {
+      this.summaryData.value = Value
     }
   }
 }
