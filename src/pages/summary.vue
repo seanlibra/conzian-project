@@ -12,8 +12,8 @@
       @openEdit="showEdit()"/>
     <br>
     <edit
-      :user-value="summaryData.value"
       v-model="openEdit"
+      :user-value="summaryData.value"
       @sendData="DataFromEdit"/>
   </div>
 </template>
@@ -68,11 +68,9 @@ export default {
       this.open = false
     },
     showEdit () {
-      console.log(this.openEdit)
       this.openEdit = !this.openEdit
     },
     DataFromEdit (Value) {
-      console.log('this is from parent', Value)
       this.summaryData.value = Value
     }
   }

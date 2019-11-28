@@ -44,7 +44,7 @@ export default {
       type: String,
       required: true
     },
-    Value: {
+    value: {
       type: Boolean,
       default: false
     }
@@ -70,12 +70,11 @@ export default {
       },
       set (val) {
         this.NewValue = val
-        console.log(this.NewValue)
       }
     }
   },
   watch: {
-    Value: function () {
+    value: function () {
       this.dialog = !this.dialog
     }
   },
