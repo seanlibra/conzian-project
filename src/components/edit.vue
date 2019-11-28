@@ -11,6 +11,7 @@
       <v-container grid-list-md>
         <v-layout wrap>
           <v-flex xs12>
+            {{ compUserValue }}
             <v-text-field
               v-model="compUserValue"
               label="value"
@@ -66,7 +67,7 @@ export default {
     },
     compUserValue: {
       get () {
-        return this.userValue
+        return this.NewValue
       },
       set (val) {
         this.NewValue = val
@@ -76,6 +77,9 @@ export default {
   watch: {
     value: function () {
       this.dialog = !this.dialog
+    },
+    userValue: function () {
+      this.NewValue = this.userValue
     }
   },
   methods: {
